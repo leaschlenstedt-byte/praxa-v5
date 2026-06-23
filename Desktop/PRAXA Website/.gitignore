@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.vite/
+.env
+.env.local
+.env*.local
+*.local
+.DS_Store
+.vercel
+praxa_landingpage_v3_3.html

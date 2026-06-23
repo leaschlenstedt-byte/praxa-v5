@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PRAXA Skills is an AI-powered rehearsal space for the high-stakes workplace conversations your team can't afford to get wrong.">
+  <title>PRAXA Skills — AI Conversation Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap" rel="stylesheet">
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body class="is-loading">
+
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="/" class="logo" aria-label="PRAXA Skills – home">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="18" r="11" fill="#3D5C52"/>
+              <circle cx="24" cy="18" r="8" fill="#C8FF3D"/>
+              <circle cx="19" cy="18" r="4" fill="#3D5C52"/>
+            </svg>
+          </span>
+          <div class="logo-text">
+            <span class="logo-wordmark">PRAXA <span>Skills</span></span>
+            <span class="logo-tagline">AI conversation training</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="#usecases" class="nav-link">Use cases</a>
+          <a href="#how" class="nav-link">How it works</a>
+          <a href="#pricing" class="nav-link">Pricing</a>
+        </div>
+        <a href="#demo" class="nav-cta">Book a demo →</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href="#usecases">Use cases</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#demo" class="btn-primary">Book a demo</a>
+    </nav>
+  </aside>
+  <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <!-- Geometric shapes -->
+    <div class="hero-deco" aria-hidden="true">
+      <div class="hero-ring hero-ring--tr">
+        <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="500" cy="0" r="360" stroke="rgba(200,255,61,0.06)" stroke-width="1"/>
+          <circle cx="500" cy="0" r="270" stroke="rgba(200,255,61,0.05)" stroke-width="0.75"/>
+          <circle cx="500" cy="0" r="180" stroke="rgba(200,255,61,0.04)" stroke-width="0.75"/>
+          <circle cx="172" cy="254" r="2.5" fill="rgba(200,255,61,0.14)"/>
+          <circle cx="98"  cy="338" r="1.5" fill="rgba(200,255,61,0.09)"/>
+          <circle cx="230" cy="390" r="2"   fill="rgba(200,255,61,0.11)"/>
+          <circle cx="60"  cy="190" r="1.5" fill="rgba(200,255,61,0.07)"/>
+        </svg>
+      </div>
+      <div class="hero-ring hero-ring--bl">
+        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="0" cy="300" r="220" stroke="rgba(255,255,255,0.04)" stroke-width="0.75"/>
+          <circle cx="0" cy="300" r="140" stroke="rgba(255,255,255,0.03)" stroke-width="0.75"/>
+          <circle cx="80"  cy="80"  r="1.5" fill="rgba(255,255,255,0.06)"/>
+          <circle cx="160" cy="140" r="1"   fill="rgba(255,255,255,0.05)"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="hero-eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            For HR leaders, L&amp;D teams, and training providers
+          </p>
+          <h1 class="hero-title">
+            Practice the conversations that <em>shape careers.</em>
+          </h1>
+          <p class="hero-lead">
+            PRAXA Skills is an AI-powered rehearsal space for the high-stakes workplace conversations your team can't afford to get wrong — practiced safely, as often as needed, before the real thing.
+          </p>
+          <div class="hero-ctas">
+            <a href="#demo" class="btn-primary">Book a 30-minute demo</a>
+            <a href="#usecases" class="btn-ghost">See use cases</a>
+          </div>
+          <ul class="hero-trust" aria-label="Key trust signals">
+            <li>EU-hosted</li>
+            <li>GDPR-compliant</li>
+            <li>Bilingual EN / DE</li>
+            <li>Made in Bavaria</li>
+          </ul>
+        </div>
+        <div class="scenario-card" aria-hidden="true">
+          <p class="scenario-card-label">Scenario library — 200+ conversations</p>
+          <ul class="scenario-items" id="scenario-items">
+            <li class="sc-item active" data-index="0"><span class="sc-dot"></span>Performance review — difficult feedback</li>
+            <li class="sc-item" data-index="1"><span class="sc-dot"></span>Customer escalation — refund dispute</li>
+            <li class="sc-item" data-index="2"><span class="sc-dot"></span>Job interview — behavioral questions</li>
+            <li class="sc-item" data-index="3"><span class="sc-dot"></span>Sales discovery call — cold prospect</li>
+            <li class="sc-item" data-index="4"><span class="sc-dot"></span>Salary negotiation — counter-offer</li>
+            <li class="sc-item" data-index="5"><span class="sc-dot"></span>Care conversation — family member update</li>
+          </ul>
+          <div class="scenario-progress-wrap">
+            <div class="scenario-progress-bar" id="scenario-progress-bar"></div>
+          </div>
+          <p class="scenario-card-footer">Voice or text · EN / DE · Upload your own scenarios</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem section" id="problem">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>The problem</p>
+      <h2 data-reveal>Most training covers theory.<br>Nobody practices the actual conversation.</h2>
+      <p class="section-lead" data-reveal>The research is consistent: skills gaps are widening, and the conversations that matter most get the least preparation time.</p>
+      <div class="stat-row" data-reveal="stagger">
+        <div class="stat-block" data-watermark="75">
+          <div class="stat-num"><em data-count="75" data-suffix="%">75%</em></div>
+          <p class="stat-txt">of employees report anxiety before difficult workplace conversations — one in three experienced this in the last six months.</p>
+          <p class="stat-src">Attensi / Training Industry, 2024</p>
+        </div>
+        <div class="stat-block" data-watermark="69">
+          <div class="stat-num"><em data-count="69" data-suffix="%">69%</em></div>
+          <p class="stat-txt">of HR professionals say their organization has a significant skills gap — with communication and interpersonal skills consistently at the top.</p>
+          <p class="stat-src">Wiley / Kenan Institute, 2024</p>
+        </div>
+        <div class="stat-block" data-watermark="72">
+          <div class="stat-num"><em data-count="72" data-suffix="%">72%</em></div>
+          <p class="stat-txt">of employees would welcome more practice opportunities for difficult conversations. Among Gen Z that number rises to 87%.</p>
+          <p class="stat-src">Attensi Employee Survey, 2024</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stats-inner" data-reveal="stagger">
+        <div class="stat-big-item"><div class="stat-big-num">200+</div><div class="stat-big-label">Pre-built scenarios — or upload your own</div></div>
+        <div class="stat-big-item"><div class="stat-big-num">EN / DE</div><div class="stat-big-label">Bilingual practice and feedback</div></div>
+        <div class="stat-big-item"><div class="stat-big-num">EU</div><div class="stat-big-label">Sovereign hosting, GDPR-compliant</div></div>
+        <div class="stat-big-item"><div class="stat-big-num">24/7</div><div class="stat-big-label">Practice on any device, any time</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <section class="usecases section" id="usecases">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Use cases</p>
+      <h2 data-reveal>Real situations. Real preparation.</h2>
+      <p class="section-lead" data-reveal>PRAXA Skills is effective because it trains on your organization's actual guidelines, policies, and situations — not generic content. Click a card to see it in practice.</p>
+
+      <div class="swiper uc-swiper" data-reveal>
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <article class="uc-card" data-target="uc1" role="button" tabindex="0" aria-expanded="false">
+              <span class="uc-card-tag">Healthcare &amp; care</span>
+              <div class="uc-persona-head">
+                <div class="uc-avatar" aria-hidden="true">M</div>
+                <div class="uc-persona-meta">
+                  <span class="uc-persona-name">Maria, 34</span>
+                  <span class="uc-persona-role">Nursing professional · B2 German</span>
+                </div>
+              </div>
+              <h3>Breaking difficult news to a family member</h3>
+              <p class="uc-card-persona">She has to inform a patient's daughter that her mother's condition has significantly deteriorated and palliative care is now recommended.</p>
+              <ul class="uc-card-scenarios">
+                <li>Navigating empathy and clinical clarity simultaneously</li>
+                <li>Culturally appropriate communication in a German care context</li>
+                <li>De-escalation when the family member becomes emotional</li>
+              </ul>
+              <p class="uc-card-result">Maria enters the real conversation feeling like she's already been through it — in a space where mistakes had no consequences.</p>
+              <span class="uc-card-cta">See how it works <span aria-hidden="true">→</span></span>
+            </article>
+          </div>
+
+          <div class="swiper-slide">
+            <article class="uc-card" data-target="uc2" role="button" tabindex="0" aria-expanded="false">
+              <span class="uc-card-tag">Vocational training</span>
+              <div class="uc-persona-head">
+                <div class="uc-avatar" aria-hidden="true">L</div>
+                <div class="uc-persona-meta">
+                  <span class="uc-persona-name">Lukas, 17</span>
+                  <span class="uc-persona-role">Apprentice · heating engineer, SME</span>
+                </div>
+              </div>
+              <h3>The first customer phone call — in a trades business</h3>
+              <p class="uc-card-persona">Starting January, he needs to handle customer calls: appointments, job updates, and fault reports. His trainer — who is also the CEO — has no time for structured coaching.</p>
+              <ul class="uc-card-scenarios">
+                <li>Answering with the correct company greeting</li>
+                <li>Capturing a fault report with the right information</li>
+                <li>Handling a complaint call without making promises he can't keep</li>
+              </ul>
+              <p class="uc-card-result">After two weeks of short daily practice sessions, Lukas takes his first real call confident, structured, and knowing when to escalate.</p>
+              <span class="uc-card-cta">See how it works <span aria-hidden="true">→</span></span>
+            </article>
+          </div>
+
+          <div class="swiper-slide">
+            <article class="uc-card" data-target="uc3" role="button" tabindex="0" aria-expanded="false">
+              <span class="uc-card-tag">Leadership development</span>
+              <div class="uc-persona-head">
+                <div class="uc-avatar" aria-hidden="true">S</div>
+                <div class="uc-persona-meta">
+                  <span class="uc-persona-name">Sandra, 41</span>
+                  <span class="uc-persona-role">Team lead · 8 months in role</span>
+                </div>
+              </div>
+              <h3>A formal performance conversation after repeated underdelivery</h3>
+              <p class="uc-card-persona">A senior team member — technically strong, eight years at the company — has been underperforming for months. She has already postponed the formal conversation twice.</p>
+              <ul class="uc-card-scenarios">
+                <li>Staying with concrete facts when the employee deflects</li>
+                <li>Staying calm when the employee threatens HR escalation</li>
+                <li>Transitioning from criticism to support when personal issues emerge</li>
+              </ul>
+              <p class="uc-card-result">Sandra conducts the conversation prepared for scenarios no seminar could have anticipated. HR receives a legally sound record. The employee feels heard.</p>
+              <span class="uc-card-cta">See how it works <span aria-hidden="true">→</span></span>
+            </article>
+          </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- Detail panels -->
+      <div class="uc-detail" id="uc1">
+        <div class="uc-detail-left">
+          <p class="uc-detail-eyebrow">Healthcare &amp; care · Use case 1</p>
+          <h3>Breaking difficult news to a family member</h3>
+          <p>Maria's care center uploads its internal communication guidelines, the palliative transition conversation framework, and the relevant sections of its quality management handbook into PRAXA Skills.</p>
+          <p>Maria then practices in three 15-minute sessions — with the AI avatar playing the worried, emotionally overwhelmed daughter.</p>
+          <div class="uc-rounds">
+            <div class="uc-round"><p class="uc-round-label">Round 1 — Finding the right words</p><p>Maria stops herself mid-conversation when she realizes her phrasing is more direct than the guidelines recommend. Feedback shows her alternatives based on the uploaded house standard.</p></div>
+            <div class="uc-round"><p class="uc-round-label">Round 2 — The transition</p><p>She practices moving from the status update to the palliative care recommendation — the hardest structural moment in the conversation.</p></div>
+            <div class="uc-round"><p class="uc-round-label">Round 3 — Emotional escalation</p><p>The avatar accuses, cries, and places blame. Maria practices de-escalation under real emotional pressure.</p></div>
+          </div>
+          <div class="uc-outcome"><strong>Outcome</strong>Maria enters the real conversation feeling like she's already been through it. Her language is precise, her presence is calm.</div>
+          <button class="uc-close-btn" data-close="uc1">↑ Close</button>
+        </div>
+        <div class="uc-detail-right">
+          <p class="uc-detail-eyebrow">Why this works</p>
+          <h3>Trained on your organization's actual guidelines — not generic content</h3>
+          <p>PRAXA Skills doesn't simulate a generic palliative care conversation. It simulates <em>your</em> version — with your care home's exact framework, your documentation requirements, and your quality standards embedded in every response and piece of feedback.</p>
+          <p>The gap between knowing the guidelines and performing them under emotional pressure is exactly what no seminar can close. PRAXA Skills closes it.</p>
+          <div class="uc-detail-sectors"><p class="uc-detail-sectors-label">Relevant sectors</p><p>Geriatric care · Hospital groups · Private care chains · Social services · Nursing schools and training institutes</p></div>
+        </div>
+      </div>
+
+      <div class="uc-detail" id="uc2">
+        <div class="uc-detail-left">
+          <p class="uc-detail-eyebrow">Vocational training · Use case 2</p>
+          <h3>The first customer phone call in a trades business</h3>
+          <p>The business accesses PRAXA Skills through a license arranged by their regional training provider. The trainer spends 20 minutes uploading the essentials: the greeting formula, the five most common call types, the fault-report checklist, and three typical complaint scenarios.</p>
+          <p>Lukas practices independently — on the company tablet in the workshop before his shift starts.</p>
+          <div class="uc-rounds">
+            <div class="uc-round"><p class="uc-round-label">Scenario 1 — "Frau Huber" reports a broken heating</p><p>Lukas has to ask the right questions, capture the report in a structured way, and communicate the next step clearly.</p></div>
+            <div class="uc-round"><p class="uc-round-label">Scenario 2 — "Herr Brandner" is angry</p><p>The technician didn't show up yesterday. Lukas practices staying factual, apologizing without making promises he can't keep, and routing the issue correctly.</p></div>
+          </div>
+          <div class="uc-outcome"><strong>Outcome</strong>The trainer saves individual coaching time without compromising quality. The tool becomes a permanent part of the training program — ready for the next apprentice in September.</div>
+          <button class="uc-close-btn" data-close="uc2">↑ Close</button>
+        </div>
+        <div class="uc-detail-right">
+          <p class="uc-detail-eyebrow">Why this works</p>
+          <h3>The trainer sets it up once. The apprentice practices as often as needed.</h3>
+          <p>In small and medium-sized businesses, structured communication training rarely exists — not because it isn't needed, but because no one has the time to deliver it consistently. PRAXA Skills solves this without requiring the trainer to be present.</p>
+          <p>The apprentice can run the same scenario a dozen times before the first real call. That repetition — safely, without judgment — builds confidence.</p>
+          <div class="uc-detail-sectors"><p class="uc-detail-sectors-label">Relevant sectors</p><p>Trades &amp; craft businesses · IHK training networks · Regional vocational training providers · Retail and service apprenticeships</p></div>
+        </div>
+      </div>
+
+      <div class="uc-detail" id="uc3">
+        <div class="uc-detail-left">
+          <p class="uc-detail-eyebrow">Leadership development · Use case 3</p>
+          <h3>A formal performance conversation after repeated underdelivery</h3>
+          <p>The company has introduced PRAXA Skills as part of its leadership development program. Uploaded: the internal conversation structure for documented performance discussions, the HR policy on legally relevant documentation, the code of conduct, and the works agreement on performance assessment.</p>
+          <div class="uc-rounds">
+            <div class="uc-round"><p class="uc-round-label">Round 1 — The deflector</p><p>The avatar acknowledges the problem but relativizes every concrete example. Sandra practices staying with facts and not getting drawn into justification debates.</p></div>
+            <div class="uc-round"><p class="uc-round-label">Round 2 — The confrontational one</p><p>The avatar threatens to escalate to the works council. She practices holding the frame while not destroying the relationship.</p></div>
+            <div class="uc-round"><p class="uc-round-label">Round 3 — The emotional one</p><p>The avatar breaks down and hints at personal problems. Sandra practices transitioning from criticism to support without losing the core message.</p></div>
+          </div>
+          <div class="uc-outcome"><strong>Outcome</strong>Sandra leads the conversation prepared for moments no seminar could have anticipated. HR receives a legally sound record. The employee feels heard — and the team can move forward.</div>
+          <button class="uc-close-btn" data-close="uc3">↑ Close</button>
+        </div>
+        <div class="uc-detail-right">
+          <p class="uc-detail-eyebrow">Why this works</p>
+          <h3>The gap between a written guideline and a real person sitting across from you.</h3>
+          <p>HR can send the framework. But between "Step 3: state expectations clearly" and the reality of someone who deflects, escalates, or breaks down — there's a gap no document closes. PRAXA Skills closes it.</p>
+          <p>After each round, Sandra receives structured feedback: Was the expectation stated clearly? Was a concrete agreement made? Was the documentable part closed properly?</p>
+          <div class="uc-detail-sectors"><p class="uc-detail-sectors-label">Relevant sectors</p><p>Manufacturing &amp; engineering · Financial services · Professional services · Any organization with 50+ employees running formal leadership development</p></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how section" id="how">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>How it works</p>
+      <h2 data-reveal>Three steps. Real improvement.</h2>
+      <p class="section-lead" data-reveal>PRAXA Skills puts learners in realistic conversations with an AI partner — then gives them specific feedback on what to do differently next time.</p>
+      <div class="steps">
+        <div class="step" data-step-bg="01" data-reveal>
+          <span class="step-num" aria-hidden="true">01</span>
+          <div class="step-body">
+            <p class="step-title">Upload your organization's context</p>
+            <p class="step-desc">Feed PRAXA Skills your own guidelines, playbooks, compliance standards, or conversation frameworks. Takes 20–30 minutes. The AI uses them to shape every scenario and every piece of feedback — so practice reflects your reality, not a generic template.</p>
+          </div>
+        </div>
+        <div class="step" data-step-bg="02" data-reveal>
+          <span class="step-num" aria-hidden="true">02</span>
+          <div class="step-body">
+            <p class="step-title">Choose a scenario and practice</p>
+            <p class="step-desc">Pick from 200+ pre-built workplace conversations or build your own. Voice or text. The AI plays the other party — customer, employee, candidate, family member — and responds the way a real person would, including difficult moments: deflection, emotion, escalation.</p>
+          </div>
+        </div>
+        <div class="step" data-step-bg="03" data-reveal>
+          <span class="step-num" aria-hidden="true">03</span>
+          <div class="step-body">
+            <p class="step-title">Get specific, structured feedback</p>
+            <p class="step-desc">After every session, see exactly what worked, what to adjust, and what to try next time. Not a generic score — concrete observations tied to the actual conversation and your uploaded guidelines.</p>
+          </div>
+        </div>
+        <div class="step" data-step-bg="04" data-reveal>
+          <span class="step-num" aria-hidden="true">04</span>
+          <div class="step-body">
+            <p class="step-title">Track progress across the team</p>
+            <p class="step-desc">Managers and L&amp;D leads see usage, completion rates, and skill gaps across the whole team. Identify where to invest next. Show ROI without manual reporting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESPONSIBLE AI -->
+  <section class="responsible section" id="responsible">
+    <!-- Geometric shapes -->
+    <div class="responsible-deco" aria-hidden="true">
+      <div class="responsible-ring">
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="400" cy="400" r="300" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <circle cx="400" cy="400" r="200" stroke="rgba(255,255,255,0.03)" stroke-width="0.75"/>
+          <circle cx="400" cy="400" r="110" stroke="rgba(200,255,61,0.05)" stroke-width="0.75"/>
+          <circle cx="130" cy="100" r="2"   fill="rgba(255,255,255,0.07)"/>
+          <circle cx="60"  cy="200" r="1.5" fill="rgba(255,255,255,0.05)"/>
+          <circle cx="200" cy="60"  r="1.5" fill="rgba(200,255,61,0.08)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Trust by design</p>
+      <h2 data-reveal>Responsible AI isn't a feature we added.<br>It's built into every step.</h2>
+      <p class="responsible-lead" data-reveal>For HR, works councils, and care organizations, the question isn't only "does it work" — it's "can we trust it". PRAXA Skills is developed with responsible-AI, data protection, and AI-ethics expertise embedded in every development step, not reviewed at the end.</p>
+      <div class="responsible-grid" data-reveal="stagger">
+        <div class="responsible-card"><h3>Source-checked, not invented</h3><p>Feedback is grounded in your uploaded guidelines through a source-check mechanism designed to prevent the AI from making things up.</p></div>
+        <div class="responsible-card"><h3>No automated judgment</h3><p>PRAXA Skills supports practice — it does not score, rank, or make automated assessments about people, in line with the EU AI Act.</p></div>
+        <div class="responsible-card"><h3>Sovereign &amp; GDPR-compliant</h3><p>Hosted on sovereign European infrastructure. Data stays in the EU, with transparency and user control over what is stored and shared.</p></div>
+      </div>
+      <p class="responsible-note" data-reveal>Every development step is accompanied by <strong>VERDAS AI</strong> — our embedded competency for responsible AI, data protection, and AI-ethics. Trustworthy AI is a design principle at PRAXA Skills, not an afterthought.</p>
+    </div>
+  </section>
+
+  <!-- WHY PRAXA SKILLS -->
+  <section class="why section" id="why">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Why PRAXA Skills</p>
+      <h2 data-reveal>Built for the conversations that matter most.</h2>
+      <p class="section-lead" data-reveal>Traditional training delivers knowledge. PRAXA Skills delivers practice — the thing that actually changes behavior.</p>
+      <div class="why-grid" data-reveal="stagger">
+        <div class="why-card"><p class="why-num">01</p><h3>Available 24/7</h3><p>Learners practice on their own schedule, on their own device. No coordinating calendars. No waiting for the next workshop slot.</p></div>
+        <div class="why-card"><p class="why-num">02</p><h3>Personalized feedback</h3><p>Every session ends with concrete, actionable insight — based on the actual conversation, tied to your organization's own guidelines.</p></div>
+        <div class="why-card"><p class="why-num">03</p><h3>Organizationally specific</h3><p>Not a generic simulation. Your guidelines, your standards, your situations — embedded in every scenario and every piece of feedback.</p></div>
+        <div class="why-card"><p class="why-num">04</p><h3>Repeatable and safe</h3><p>Make mistakes without consequences — as often as needed, until confidence is there. That's what no seminar can offer.</p></div>
+        <div class="why-card"><p class="why-num">05</p><h3>Built for scale</h3><p>Train ten people or ten thousand with the same quality. From apprentice to senior leader. No additional training staff required.</p></div>
+        <div class="why-card"><p class="why-num">06</p><h3>EU-hosted, GDPR-compliant</h3><p>All data stays in Europe. Fully GDPR-compliant. Bilingual EN/DE. LMS-ready. Made in Bavaria.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHOM -->
+  <section class="forwhom section" id="forwhom">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Who uses PRAXA Skills</p>
+      <h2 data-reveal>Built for the people who run training — at any scale.</h2>
+      <p class="section-lead" data-reveal>Whether you're training a 10-person team or a 10,000-member professional association, PRAXA Skills fits the way you already work.</p>
+      <div class="audience-grid" data-reveal="stagger">
+        <div class="audience-card"><p class="audience-tag">In-house L&amp;D teams</p><h3>Add a practice layer to your existing programs</h3><p>PRAXA Skills isn't a replacement for your workshops — it's what happens between them. Learners arrive at your sessions having already practiced. They leave with a tool to keep going.</p></div>
+        <div class="audience-card"><p class="audience-tag">Professional associations &amp; certifiers</p><h3>A scalable member benefit for communication skills</h3><p>Add PRAXA Skills to your certification pathway or member benefits package. White-label available. Custom scenario libraries per certification track. API integration with your platform.</p></div>
+        <div class="audience-card"><p class="audience-tag">Ausbildungsbetriebe &amp; IHK networks</p><h3>Conversation training for apprentices — without trainer hours</h3><p>Apprentices practice customer calls and job interviews independently, on any device, with real feedback. No burden on the trainer. GDPR-compliant. Ready in 20 minutes.</p></div>
+        <div class="audience-card"><p class="audience-tag">Training providers</p><h3>Differentiate your offer with AI-powered practice</h3><p>Your trainers focus on insight and coaching. PRAXA Skills handles repetition, simulation, and the feedback loop — so every learner gets the practice time they need, regardless of cohort size.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="comparison section" id="comparison">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Comparison</p>
+      <h2 data-reveal>What PRAXA Skills replaces — and what it adds.</h2>
+      <p class="section-lead" data-reveal>Traditional training covers the theory. PRAXA Skills covers the practice.</p>
+      <div class="comp-table-wrap" data-reveal>
+        <table class="comp-table">
+          <thead>
+            <tr><th scope="col">Capability</th><th scope="col">Traditional training</th><th scope="col">1:1 coaching</th><th scope="col">PRAXA Skills</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Available 24/7</td><td><span class="comp-dash">—</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Organizationally specific training content</td><td><span class="comp-partial">Rarely</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Personalized feedback every session</td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Repeatable practice without judgment</td><td><span class="comp-dash">—</span></td><td><span class="comp-partial">Limited</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Scales to the whole organization</td><td><span class="comp-partial">With effort</span></td><td><span class="comp-dash">Too costly</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Bilingual EN / DE</td><td><span class="comp-partial">Sometimes</span></td><td><span class="comp-partial">Coach-dependent</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>EU-hosted, GDPR-compliant</td><td><span class="comp-dash">—</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Source-checked feedback, no automated scoring</td><td><span class="comp-dash">—</span></td><td><span class="comp-partial">Coach-dependent</span></td><td><span class="comp-check">✓</span></td></tr>
+            <tr><td>Manager dashboard &amp; team reporting</td><td><span class="comp-dash">—</span></td><td><span class="comp-dash">—</span></td><td><span class="comp-check">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="container trust-strip-inner" data-reveal="stagger">
+      <span class="trust-label">Built with</span>
+      <div class="trust-badges">
+        <span class="trust-badge">EU-hosted</span>
+        <span class="trust-badge">GDPR-compliant</span>
+        <span class="trust-badge">Bilingual EN / DE</span>
+        <span class="trust-badge">LMS-ready</span>
+        <span class="trust-badge">API available</span>
+        <span class="trust-badge">White-label option</span>
+        <span class="trust-badge">Made in Bavaria</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <section class="pricing section" id="pricing">
+    <!-- Subtle arc shape behind featured card area -->
+    <div class="pricing-deco" aria-hidden="true">
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="150" r="140" stroke="rgba(61,92,82,0.06)" stroke-width="1"/>
+        <circle cx="150" cy="150" r="95"  stroke="rgba(61,92,82,0.04)" stroke-width="0.75"/>
+      </svg>
+    </div>
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Pricing</p>
+      <h2 data-reveal>Simple, transparent pricing.</h2>
+      <p class="section-lead" data-reveal>All plans include EU-hosting, GDPR compliance, and bilingual EN/DE support. No setup fees.</p>
+      <div class="pricing-grid" data-reveal="stagger">
+        <div class="pricing-card">
+          <p class="pricing-tier">Starter</p>
+          <p class="pricing-name">For small teams</p>
+          <p class="pricing-price">Per learner / month · up to 25 learners · pricing on request</p>
+          <ul class="pricing-features">
+            <li>Full scenario library (200+ scenarios)</li>
+            <li>Voice and text practice</li>
+            <li>Personalized feedback every session</li>
+            <li>Basic manager dashboard</li>
+            <li>Email support</li>
+          </ul>
+          <a href="#demo" class="btn-plan">Book a demo</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most popular</div>
+          <p class="pricing-tier">Professional</p>
+          <p class="pricing-name">For L&amp;D teams</p>
+          <p class="pricing-price">Per learner / month · up to 250 learners · pricing on request</p>
+          <ul class="pricing-features">
+            <li>Everything in Starter</li>
+            <li>Upload your own guidelines and scenarios</li>
+            <li>Full team reporting &amp; skill gap analysis</li>
+            <li>LMS integration</li>
+            <li>Dedicated onboarding</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#demo" class="btn-plan">Book a demo</a>
+        </div>
+        <div class="pricing-card">
+          <p class="pricing-tier">Enterprise &amp; Associations</p>
+          <p class="pricing-name">For large organizations</p>
+          <p class="pricing-price">Custom pricing · unlimited learners</p>
+          <ul class="pricing-features">
+            <li>Everything in Professional</li>
+            <li>White-label option</li>
+            <li>API access</li>
+            <li>Custom branding per course</li>
+            <li>SLA &amp; dedicated support</li>
+            <li>On-premise hosting on request</li>
+          </ul>
+          <a href="mailto:hello@praxa.de" class="btn-plan">Contact us</a>
+        </div>
+      </div>
+      <p class="pricing-note" data-reveal>Prices are indicative. Final pricing based on learner volume and contract length. Contact us for a custom quote.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section section" id="demo">
+    <!-- Geometric shapes -->
+    <div class="cta-deco" aria-hidden="true">
+      <div class="cta-ring cta-ring--right">
+        <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="0" cy="250" r="340" stroke="rgba(200,255,61,0.06)" stroke-width="1"/>
+          <circle cx="0" cy="250" r="240" stroke="rgba(200,255,61,0.04)" stroke-width="0.75"/>
+          <circle cx="0" cy="250" r="150" stroke="rgba(200,255,61,0.03)" stroke-width="0.75"/>
+          <circle cx="180" cy="80"  r="2"   fill="rgba(200,255,61,0.10)"/>
+          <circle cx="320" cy="160" r="1.5" fill="rgba(200,255,61,0.07)"/>
+          <circle cx="260" cy="410" r="2"   fill="rgba(200,255,61,0.08)"/>
+        </svg>
+      </div>
+      <div class="cta-ring cta-ring--left">
+        <svg viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="280" cy="140" r="200" stroke="rgba(255,255,255,0.03)" stroke-width="0.75"/>
+          <circle cx="280" cy="140" r="120" stroke="rgba(255,255,255,0.02)" stroke-width="0.75"/>
+        </svg>
+      </div>
+    </div>
+    <div class="container cta-inner">
+      <h2 data-reveal>Ready to see PRAXA Skills in action?</h2>
+      <p data-reveal>Book a 30-minute demo — we'll show you how PRAXA Skills fits your training stack and build a custom scenario for your team on the spot.</p>
+      <div class="cta-actions" data-reveal>
+        <a href="mailto:hello@praxa.de" class="btn-primary btn-lg">Book a demo →</a>
+        <a href="mailto:hello@praxa.de" class="btn-outline">Send us a question</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">PRAXA <span>Skills</span></div>
+          <p class="footer-brand-desc">The rehearsal space for the conversations that shape careers. Made in Bavaria, built for global organizations.</p>
+        </div>
+        <div>
+          <p class="footer-col-title">Product</p>
+          <nav class="footer-links" aria-label="Product">
+            <a href="#usecases">Use cases</a>
+            <a href="#how">How it works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#demo">Book a demo</a>
+          </nav>
+        </div>
+        <div>
+          <p class="footer-col-title">Who we serve</p>
+          <nav class="footer-links" aria-label="Audience">
+            <a href="#">HR &amp; L&amp;D teams</a>
+            <a href="#">Sales &amp; customer service</a>
+            <a href="#">Professional associations</a>
+            <a href="#">Vocational training</a>
+          </nav>
+        </div>
+        <div>
+          <p class="footer-col-title">Company</p>
+          <nav class="footer-links" aria-label="Company">
+            <a href="mailto:hello@praxa.de">hello@praxa.de</a>
+            <a href="#">Privacy policy</a>
+            <a href="#">Imprint</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PRAXA Skills GmbH i.&nbsp;Gr. · Made in Bavaria</span>
+        <div class="footer-pills">
+          <span class="footer-pill">EU-hosted</span>
+          <span class="footer-pill">GDPR-compliant</span>
+          <span class="footer-pill">EN / DE</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAXA Skills — Manifesto</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --white:#f8f8f6;
+  --ink:#111111;
+  --mid:#666;
+  --rule:rgba(17,17,17,0.1);
+}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  mix-blend-mode:multiply;
+}
+.logo{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--ink);text-decoration:none;}
+.nav-r{display:flex;gap:16px;align-items:center;}
+.lang-btn{font-size:11px;letter-spacing:1px;color:var(--mid);background:none;border:none;cursor:pointer;text-transform:uppercase;font-family:'Inter',sans-serif;}
+.lang-btn:hover{color:var(--ink);}
+
+/* EACH STATEMENT = one full screen */
+.statement{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 48px;
+  border-bottom:1px solid var(--rule);
+  position:relative;
+  overflow:hidden;
+}
+
+/* alternating backgrounds */
+.statement:nth-child(even){background:var(--ink);color:var(--white);}
+.statement:nth-child(even) .st-num{color:rgba(248,248,246,0.15);}
+.statement:nth-child(even) .st-sub{color:rgba(248,248,246,0.4);}
+.statement:nth-child(even) .st-line{background:rgba(248,248,246,0.1);}
+
+.st-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(120px,20vw,280px);
+  line-height:0.85;
+  color:rgba(17,17,17,0.06);
+  position:absolute;
+  right:48px;
+  bottom:40px;
+  pointer-events:none;
+  user-select:none;
+  letter-spacing:-4px;
+}
+
+.st-content{max-width:900px;position:relative;z-index:1;}
+.st-kicker{font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--mid);margin-bottom:32px;display:flex;align-items:center;gap:16px;}
+.st-kicker::before{content:'';width:40px;height:1px;background:currentColor;display:block;}
+.statement:nth-child(even) .st-kicker{color:rgba(248,248,246,0.3);}
+
+.st-main{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(56px,9vw,130px);
+  line-height:0.92;
+  letter-spacing:1px;
+  margin-bottom:40px;
+}
+.statement:nth-child(odd) .st-main{color:var(--ink);}
+.statement:nth-child(even) .st-main{color:var(--white);}
+
+.st-line{width:48px;height:2px;background:rgba(17,17,17,0.15);margin-bottom:28px;}
+
+.st-sub{
+  font-size:16px;font-weight:300;color:var(--mid);
+  line-height:1.75;max-width:480px;
+}
+.st-sub strong{font-weight:500;color:var(--ink);}
+.statement:nth-child(even) .st-sub strong{color:var(--white);}
+
+/* CTA in last statement */
+.st-cta{
+  margin-top:48px;
+  display:flex;gap:16px;align-items:center;flex-wrap:wrap;
+}
+.btn-main{
+  font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;
+  padding:14px 32px;background:var(--white);color:var(--ink);text-decoration:none;
+  transition:opacity 0.2s;
+}
+.btn-main:hover{opacity:0.8;}
+.btn-soft{font-size:13px;color:rgba(248,248,246,0.4);text-decoration:none;}
+.btn-soft:hover{color:rgba(248,248,246,0.7);}
+
+/* PRICING — minimal, final screen */
+.pricing-section{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 48px;
+  background:var(--white);
+  border-bottom:1px solid var(--rule);
+}
+.pr-eyebrow{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:48px;}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);}
+.plan{padding:40px 32px;border-right:1px solid var(--rule);}
+.plan:last-child{border-right:none;}
+.plan.mid{background:var(--ink);color:var(--white);}
+.pname{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;margin-bottom:8px;}
+.plan.mid .pname{color:var(--white);}
+.pfor{font-size:13px;font-weight:300;color:var(--mid);margin-bottom:24px;}
+.plan.mid .pfor{color:rgba(248,248,246,0.4);}
+.pprice{font-size:13px;color:var(--mid);margin-bottom:24px;}
+.plan.mid .pprice{color:rgba(248,248,246,0.3);}
+.pfeats{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:32px;}
+.pfeats li{font-size:13px;color:var(--mid);padding-left:14px;position:relative;font-weight:300;}
+.pfeats li::before{content:'—';position:absolute;left:0;color:rgba(17,17,17,0.2);}
+.plan.mid .pfeats li{color:rgba(248,248,246,0.5);}
+.plan.mid .pfeats li::before{color:rgba(248,248,246,0.15);}
+.pbtn{display:block;text-align:center;padding:12px;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:1px solid var(--rule);color:var(--ink);transition:all 0.2s;font-family:'Inter',sans-serif;}
+.pbtn:hover{background:var(--ink);color:var(--white);border-color:var(--ink);}
+.plan.mid .pbtn{border-color:rgba(248,248,246,0.15);color:rgba(248,248,246,0.6);}
+.plan.mid .pbtn:hover{background:rgba(248,248,246,0.08);}
+
+footer{padding:28px 48px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+footer a{font-size:11px;color:var(--mid);text-decoration:none;}
+.fc{font-size:11px;color:rgba(17,17,17,0.25);}
+
+@media(max-width:768px){
+  nav,.statement,.pricing-section,footer{padding-left:24px;padding-right:24px;}
+  .plans{grid-template-columns:1fr;}
+  .plan{border-right:none;border-bottom:1px solid var(--rule);}
+  .st-num{font-size:30vw;right:16px;bottom:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">PRAXA Skills</a>
+  <div class="nav-r">
+    <button class="lang-btn" onclick="toggleLang()">DE / EN</button>
+  </div>
+</nav>
+
+<!-- STATEMENT 1 — light -->
+<section class="statement">
+  <div class="st-num">01</div>
+  <div class="st-content">
+    <div class="st-kicker" id="k1">Der einzige Grundsatz</div>
+    <h2 class="st-main" id="s1">Üben heißt<br>scheitern<br>dürfen.</h2>
+    <div class="st-line"></div>
+    <p class="st-sub" id="sub1">Kein echtes Gespräch gibt Ihnen die Möglichkeit, <strong>dasselbe nochmal zu führen</strong>. PRAXA Skills tut das. Unbegrenzt oft, ohne Konsequenzen, mit konkretem Feedback danach.</p>
+  </div>
+</section>
+
+<!-- STATEMENT 2 — dark -->
+<section class="statement">
+  <div class="st-num">02</div>
+  <div class="st-content">
+    <div class="st-kicker" id="k2">Was wir gebaut haben</div>
+    <h2 class="st-main" id="s2">200 Gespräche.<br>Keines davon<br>hat Konsequenzen.</h2>
+    <div class="st-line"></div>
+    <p class="st-sub" id="sub2">Leistungsgespräche. Palliativgespräche. Kaltakquise. Erster Kundentelefonruf. Zertifizierungsgespräche. Alle mit einem KI-Gesprächspartner, der sich verhält wie die Person, die Sie wirklich nervös macht.</p>
+  </div>
+</section>
+
+<!-- STATEMENT 3 — light -->
+<section class="statement">
+  <div class="st-num">03</div>
+  <div class="st-content">
+    <div class="st-kicker" id="k3">Was uns von generischen Lösungen unterscheidet</div>
+    <h2 class="st-main" id="s3">Ihre Richtlinien.<br>Nicht unsere<br>Musterlösungen.</h2>
+    <div class="st-line"></div>
+    <p class="st-sub" id="sub3">Sie laden Ihre Betriebsvereinbarungen, Qualitätshandbücher und Gesprächsrahmen hoch. Der KI-Gesprächspartner trainiert darauf. Das Feedback verweist auf Ihre Dokumente — <strong>nicht auf generische Best Practices</strong> aus dem Internet.</p>
+  </div>
+</section>
+
+<!-- STATEMENT 4 — dark -->
+<section class="statement">
+  <div class="st-num">04</div>
+  <div class="st-content">
+    <div class="st-kicker" id="k4">Für wen</div>
+    <h2 class="st-main" id="s4">Pflege. Führung.<br>Ausbildung.<br>Vertrieb. Verbände.</h2>
+    <div class="st-line"></div>
+    <p class="st-sub" id="sub4">Egal ob Pflegefachkraft im ersten schwierigen Angehörigengespräch, Auszubildender beim ersten Kundenanruf oder Teamleiterin vor dem zweiten Leistungsgespräch — der Kontext ändert sich. Das Prinzip nicht.</p>
+    <div class="st-cta">
+      <a href="mailto:hello@praxa.de" class="btn-main" id="cta1">Demo buchen →</a>
+      <a href="mailto:hello@praxa.de" class="btn-soft" id="cta2">hello@praxa.de</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="pr-eyebrow" id="prl">Was es kostet · EU-Hosting · DSGVO · Made in Bavaria</div>
+  <div class="plans">
+    <div class="plan">
+      <div class="pname" id="pn1">Starter</div>
+      <div class="pfor" id="pf1">bis 25 Lernende</div>
+      <div class="pprice" id="ppr1">Auf Anfrage</div>
+      <ul class="pfeats"><li id="pfl1-1">200+ Szenarien</li><li id="pfl1-2">Sprache & Text</li><li id="pfl1-3">Feedback & Dashboard</li></ul>
+      <a href="mailto:hello@praxa.de" class="pbtn" id="pb1">Anfragen</a>
+    </div>
+    <div class="plan mid">
+      <div class="pname" id="pn2">Professional</div>
+      <div class="pfor" id="pf2">bis 250 Lernende</div>
+      <div class="pprice" id="ppr2">Auf Anfrage</div>
+      <ul class="pfeats"><li id="pfl2-1">+ Eigene Richtlinien</li><li id="pfl2-2">Team-Reporting</li><li id="pfl2-3">LMS</li></ul>
+      <a href="mailto:hello@praxa.de" class="pbtn" id="pb2">Anfragen</a>
+    </div>
+    <div class="plan">
+      <div class="pname" id="pn3">Enterprise</div>
+      <div class="pfor" id="pf3">unbegrenzt</div>
+      <div class="pprice" id="ppr3">Individuell</div>
+      <ul class="pfeats"><li id="pfl3-1">White-Label</li><li id="pfl3-2">API</li><li id="pfl3-3">SLA</li></ul>
+      <a href="mailto:hello@praxa.de" class="pbtn" id="pb3">Kontakt</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;gap:24px;"><a href="#" id="fl1">Datenschutz</a><a href="#" id="fl2">Impressum</a><a href="mailto:hello@praxa.de">hello@praxa.de</a></div>
+  <span class="fc" id="fc">© 2026 PRAXA Skills · EU AI Act Art. 6 konform</span>
+</footer>
+
+<script>
+const T={
+  de:{
+    'k1':'Der einzige Grundsatz','s1':'Üben heißt<br>scheitern<br>dürfen.','sub1':'Kein echtes Gespräch gibt Ihnen die Möglichkeit, <strong>dasselbe nochmal zu führen</strong>. PRAXA Skills tut das. Unbegrenzt oft, ohne Konsequenzen, mit konkretem Feedback danach.',
+    'k2':'Was wir gebaut haben','s2':'200 Gespräche.<br>Keines davon<br>hat Konsequenzen.','sub2':'Leistungsgespräche. Palliativgespräche. Kaltakquise. Erster Kundentelefonruf. Zertifizierungsgespräche. Alle mit einem KI-Gesprächspartner, der sich verhält wie die Person, die Sie wirklich nervös macht.',
+    'k3':'Was uns von generischen Lösungen unterscheidet','s3':'Ihre Richtlinien.<br>Nicht unsere<br>Musterlösungen.','sub3':'Sie laden Ihre Betriebsvereinbarungen, Qualitätshandbücher und Gesprächsrahmen hoch. Das Feedback verweist auf Ihre Dokumente — <strong>nicht auf generische Best Practices</strong> aus dem Internet.',
+    'k4':'Für wen','s4':'Pflege. Führung.<br>Ausbildung.<br>Vertrieb. Verbände.','sub4':'Ob Pflegefachkraft im ersten schwierigen Angehörigengespräch, Auszubildender beim ersten Kundenanruf oder Teamleiterin vor dem zweiten Leistungsgespräch — der Kontext ändert sich. Das Prinzip nicht.',
+    'cta1':'Demo buchen →','cta2':'hello@praxa.de',
+    'prl':'Was es kostet · EU-Hosting · DSGVO · Made in Bavaria',
+    'pn1':'Starter','pf1':'bis 25 Lernende','ppr1':'Auf Anfrage','pfl1-1':'200+ Szenarien','pfl1-2':'Sprache & Text','pfl1-3':'Feedback & Dashboard','pb1':'Anfragen',
+    'pn2':'Professional','pf2':'bis 250 Lernende','ppr2':'Auf Anfrage','pfl2-1':'+ Eigene Richtlinien','pfl2-2':'Team-Reporting','pfl2-3':'LMS','pb2':'Anfragen',
+    'pn3':'Enterprise','pf3':'unbegrenzt','ppr3':'Individuell','pfl3-1':'White-Label','pfl3-2':'API','pfl3-3':'SLA','pb3':'Kontakt',
+    'fl1':'Datenschutz','fl2':'Impressum','fc':'© 2026 PRAXA Skills · EU AI Act Art. 6 konform',
+  },
+  en:{
+    'k1':'The one principle','s1':'To practice<br>means being<br>allowed to fail.','sub1':'No real conversation gives you the chance to <strong>have it again</strong>. PRAXA Skills does. Unlimited times, no consequences, with concrete feedback afterward.',
+    'k2':'What we built','s2':'200 conversations.<br>None of them<br>have consequences.','sub2':'Performance reviews. Palliative conversations. Cold outreach. First customer call. Certification interviews. All with an AI partner that behaves like the person who actually makes you nervous.',
+    'k3':'What sets us apart from generic solutions','s3':'Your policies.<br>Not our<br>templates.','sub3':'You upload your works agreements, quality handbooks, and conversation frameworks. Feedback references your documents — <strong>not generic best practices</strong> from the internet.',
+    'k4':'Who it\'s for','s4':'Care. Leadership.<br>Training.<br>Sales. Associations.','sub4':'Whether a care professional in their first difficult family conversation, an apprentice on their first customer call, or a team lead before a second performance review — the context changes. The principle doesn\'t.',
+    'cta1':'Book demo →','cta2':'hello@praxa.de',
+    'prl':'What it costs · EU hosting · GDPR · Made in Bavaria',
+    'pn1':'Starter','pf1':'up to 25 learners','ppr1':'On request','pfl1-1':'200+ scenarios','pfl1-2':'Voice & text','pfl1-3':'Feedback & dashboard','pb1':'Request',
+    'pn2':'Professional','pf2':'up to 250 learners','ppr2':'On request','pfl2-1':'+ Custom policies','pfl2-2':'Team reporting','pfl2-3':'LMS','pb2':'Request',
+    'pn3':'Enterprise','pf3':'unlimited','ppr3':'Custom','pfl3-1':'White-label','pfl3-2':'API','pfl3-3':'SLA','pb3':'Contact',
+    'fl1':'Privacy','fl2':'Imprint','fc':'© 2026 PRAXA Skills · EU AI Act Art. 6 compliant',
+  }
+};
+let lang='de';
+function toggleLang(){
+  lang=lang==='de'?'en':'de';
+  document.documentElement.lang=lang;
+  Object.keys(T[lang]).forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=T[lang][id];});
+  document.querySelector('.lang-btn').textContent=lang==='de'?'DE / EN':'EN / DE';
+}
+</script>
+</body>
+</html>

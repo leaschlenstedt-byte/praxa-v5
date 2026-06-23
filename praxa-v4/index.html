@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAXA Skills — Business Case</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f5f5f4;
+  --white:#ffffff;
+  --ink:#111110;
+  --mid:#555550;
+  --dim:#999990;
+  --rule:rgba(17,17,16,0.1);
+  --rule2:rgba(17,17,16,0.06);
+  --accent:#111110;
+  --green:#1a7a3a;
+  --red:#8b1a1a;
+  --amber:#7a5a00;
+}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--bg);border-bottom:1px solid var(--rule);
+}
+.logo{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);text-decoration:none;letter-spacing:0.5px;}
+.nav-r{display:flex;gap:16px;align-items:center;}
+.lang-btn{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);background:none;border:none;cursor:pointer;}
+.lang-btn:hover{color:var(--ink);}
+.demo-btn{font-size:12px;font-weight:500;color:var(--white);background:var(--ink);padding:8px 18px;text-decoration:none;transition:opacity 0.2s;font-family:'IBM Plex Sans',sans-serif;}
+.demo-btn:hover{opacity:0.8;}
+
+/* OPENING CLAIM */
+.claim{
+  padding:120px 48px 60px;
+  border-bottom:1px solid var(--rule);
+}
+.claim-inner{max-width:900px;}
+.claim-kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;}
+.claim-title{
+  font-size:clamp(32px,5vw,60px);font-weight:300;line-height:1.1;
+  letter-spacing:-1px;color:var(--ink);margin-bottom:0;
+}
+.claim-title strong{font-weight:600;}
+
+/* COMPARISON TABLE */
+.table-section{padding:60px 48px;border-bottom:1px solid var(--rule);}
+.table-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;}
+table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--rule);}
+thead th{
+  padding:14px 20px;text-align:left;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
+  color:var(--dim);letter-spacing:1px;text-transform:uppercase;
+  border-bottom:2px solid var(--rule);background:var(--bg);
+}
+thead th.col-praxa{background:var(--ink);color:var(--white);}
+tbody td{
+  padding:13px 20px;font-size:13px;color:var(--mid);
+  border-bottom:1px solid var(--rule2);vertical-align:middle;
+}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:rgba(17,17,16,0.02);}
+td.feat{color:var(--ink);font-weight:400;}
+td.yes{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--green);font-weight:500;}
+td.no{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--red);}
+td.partial{font-size:12px;color:var(--amber);}
+td.praxa-col{background:rgba(17,17,16,0.02);}
+td.praxa-col.yes{background:rgba(26,122,58,0.06);color:var(--green);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;}
+
+/* ROI CALCULATOR */
+.calculator{padding:60px 48px;background:var(--white);border-bottom:1px solid var(--rule);}
+.calc-inner{max-width:800px;margin:0 auto;}
+.calc-title{font-size:22px;font-weight:500;color:var(--ink);margin-bottom:8px;}
+.calc-sub{font-size:14px;color:var(--mid);margin-bottom:48px;font-weight:300;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.calc-inputs{display:flex;flex-direction:column;gap:28px;}
+.calc-field{}
+.field-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;justify-content:space-between;}
+.field-val{font-weight:500;color:var(--ink);}
+input[type=range]{
+  width:100%;-webkit-appearance:none;height:2px;
+  background:var(--rule);outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:16px;height:16px;
+  border-radius:50%;background:var(--ink);cursor:pointer;
+}
+.calc-output{
+  background:var(--bg);border:1px solid var(--rule);
+  padding:32px;display:flex;flex-direction:column;gap:20px;
+}
+.out-row{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid var(--rule2);}
+.out-row:last-child{border-bottom:none;padding-bottom:0;}
+.out-label{font-size:13px;color:var(--mid);}
+.out-val{font-family:'IBM Plex Mono',monospace;font-size:20px;color:var(--ink);font-weight:500;}
+.out-val.green{color:var(--green);}
+.calc-note{font-size:11px;color:var(--dim);margin-top:16px;line-height:1.6;}
+
+/* PRICING */
+.pricing{padding:60px 48px;border-bottom:1px solid var(--rule);}
+.pr-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);background:var(--rule);}
+.plan{background:var(--white);padding:36px 28px;}
+.plan.mid{background:var(--ink);}
+.pname{font-size:18px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+.plan.mid .pname{color:var(--white);}
+.pfor{font-size:12px;color:var(--mid);margin-bottom:24px;line-height:1.5;}
+.plan.mid .pfor{color:rgba(255,255,255,0.45);}
+.pprice{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--dim);margin-bottom:24px;}
+.plan.mid .pprice{color:rgba(255,255,255,0.3);}
+.pfeats{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:28px;}
+.pfeats li{font-size:12px;color:var(--mid);display:flex;gap:8px;align-items:flex-start;}
+.pfeats li::before{content:'+';color:var(--dim);font-family:'IBM Plex Mono',monospace;flex-shrink:0;}
+.plan.mid .pfeats li{color:rgba(255,255,255,0.55);}
+.pbtn{display:block;text-align:center;padding:10px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid var(--rule);color:var(--ink);transition:all 0.2s;font-family:'IBM Plex Sans',sans-serif;}
+.pbtn:hover{background:var(--ink);color:var(--white);border-color:var(--ink);}
+.plan.mid .pbtn{border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);}
+.plan.mid .pbtn:hover{background:rgba(255,255,255,0.08);}
+
+footer{padding:28px 48px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+footer a{font-size:11px;color:var(--dim);text-decoration:none;}
+.fc{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);}
+
+@media(max-width:768px){
+  nav,.claim,.table-section,.calculator,.pricing,footer{padding-left:24px;padding-right:24px;}
+  .calc-grid{grid-template-columns:1fr;}
+  .plans{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="logo">PRAXA_Skills</a>
+  <div class="nav-r">
+    <button class="lang-btn" onclick="toggleLang()">DE / EN</button>
+    <a href="mailto:hello@praxa.de" class="demo-btn" id="nav-demo">Demo anfragen</a>
+  </div>
+</nav>
+
+<section class="claim">
+  <div class="claim-inner">
+    <div class="claim-kicker" id="ck">Internes Training · Entscheidungsunterlage</div>
+    <h1 class="claim-title" id="ct">
+      Das günstigste L&D-Investment,<br>
+      das Sie <strong>2026</strong> machen werden —<br>
+      und das einzige, das vor dem Gespräch ansetzt.
+    </h1>
+  </div>
+</section>
+
+<section class="table-section">
+  <div class="table-label" id="tl">Marktvergleich · Stand 2026</div>
+  <table>
+    <thead>
+      <tr>
+        <th id="th0">Kriterium</th>
+        <th id="th1">Seminar / Workshop</th>
+        <th id="th2">1:1 Coaching</th>
+        <th id="th3">E-Learning (generisch)</th>
+        <th class="col-praxa" id="th4">PRAXA Skills</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="feat" id="f1">Trainiert auf eigenen Unternehmensrichtlinien</td><td class="no" id="c1-1">Nein</td><td class="partial" id="c1-2">Begrenzt</td><td class="no" id="c1-3">Nein</td><td class="praxa-col yes" id="c1-4">Ja</td></tr>
+      <tr><td class="feat" id="f2">Wiederholbar ohne Trainer</td><td class="no" id="c2-1">Nein</td><td class="no" id="c2-2">Nein</td><td class="yes" id="c2-3">Ja</td><td class="praxa-col yes" id="c2-4">Ja</td></tr>
+      <tr><td class="feat" id="f3">Strukturiertes Feedback je Gespräch</td><td class="partial" id="c3-1">Gruppen-Feedback</td><td class="yes" id="c3-2">Ja</td><td class="no" id="c3-3">Nein</td><td class="praxa-col yes" id="c3-4">Ja</td></tr>
+      <tr><td class="feat" id="f4">Skaliert auf gesamte Organisation</td><td class="no" id="c4-1">Hoher Aufwand</td><td class="no" id="c4-2">Nein</td><td class="yes" id="c4-3">Ja</td><td class="praxa-col yes" id="c4-4">Ja</td></tr>
+      <tr><td class="feat" id="f5">24/7 verfügbar</td><td class="no" id="c5-1">Nein</td><td class="no" id="c5-2">Nein</td><td class="yes" id="c5-3">Ja</td><td class="praxa-col yes" id="c5-4">Ja</td></tr>
+      <tr><td class="feat" id="f6">EU AI Act Art. 6 konform</td><td class="yes" id="c6-1">k.A.</td><td class="yes" id="c6-2">k.A.</td><td class="partial" id="c6-3">Unklar</td><td class="praxa-col yes" id="c6-4">Ja</td></tr>
+      <tr><td class="feat" id="f7">DSGVO · EU-Hosting</td><td class="partial" id="c7-1">Variiert</td><td class="yes" id="c7-2">Ja</td><td class="partial" id="c7-3">Variiert</td><td class="praxa-col yes" id="c7-4">Ja</td></tr>
+      <tr><td class="feat" id="f8">Zweisprachig DE / EN</td><td class="partial" id="c8-1">Trainerabh.</td><td class="partial" id="c8-2">Trainerabh.</td><td class="partial" id="c8-3">Manchmal</td><td class="praxa-col yes" id="c8-4">Ja</td></tr>
+      <tr><td class="feat" id="f9">Typische Kosten pro Lernende:r</td><td class="no" id="c9-1">300–2.000 €</td><td class="no" id="c9-2">150–400 €/h</td><td class="partial" id="c9-3">20–80 € / Jahr</td><td class="praxa-col" id="c9-4">Auf Anfrage</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="calculator">
+  <div class="calc-inner">
+    <h2 class="calc-title" id="calc-title">ROI-Rechner</h2>
+    <p class="calc-sub" id="calc-sub">Schätzen Sie das Einsparpotenzial für Ihre Organisation.</p>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <div class="field-label" id="fl1">Lernende <span class="field-val" id="fv1">50</span></div>
+          <input type="range" min="10" max="500" value="50" id="sl-learners" oninput="recalc()">
+        </div>
+        <div class="calc-field">
+          <div class="field-label" id="fl2">Seminartage / Jahr pro Person <span class="field-val" id="fv2">2</span></div>
+          <input type="range" min="1" max="10" value="2" id="sl-days" oninput="recalc()">
+        </div>
+        <div class="calc-field">
+          <div class="field-label" id="fl3">Ø Tagessatz Seminar (€) <span class="field-val" id="fv3">800</span></div>
+          <input type="range" min="200" max="2000" step="50" value="800" id="sl-rate" oninput="recalc()">
+        </div>
+      </div>
+      <div class="calc-output">
+        <div class="out-row"><span class="out-label" id="ol1">Aktuelle Seminarkosten / Jahr</span><span class="out-val" id="ov1">80.000 €</span></div>
+        <div class="out-row"><span class="out-label" id="ol2">Gebuchte Trainer-Stunden</span><span class="out-val" id="ov2">400 h</span></div>
+        <div class="out-row"><span class="out-label" id="ol3">Geschätztes Einsparpotenzial</span><span class="out-val green" id="ov3">bis 60%</span></div>
+        <p class="calc-note" id="calc-note">*Schätzung. PRAXA Skills ersetzt nicht alle Trainingsformate — es ergänzt sie. Genaue Zahlen im Demo-Gespräch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="pr-label" id="prl">Preise · EU-Hosting · DSGVO · keine Einrichtungsgebühr</div>
+  <div class="plans">
+    <div class="plan">
+      <div class="pname" id="pn1">Starter</div>
+      <div class="pfor" id="pf1">Bis 25 Lernende</div>
+      <div class="pprice" id="ppr1">Preis auf Anfrage</div>
+      <ul class="pfeats"><li id="pfl1-1">200+ Szenarien</li><li id="pfl1-2">Sprach- & Textübungen</li><li id="pfl1-3">Feedback & Dashboard</li><li id="pfl1-4">E-Mail-Support</li></ul>
+      <a href="mailto:hello@praxa.de" class="pbtn" id="pb1">Demo anfragen</a>
+    </div>
+    <div class="plan mid">
+      <div class="pname" id="pn2">Professional</div>
+      <div class="pfor" id="pf2">Bis 250 Lernende</div>
+      <div class="pprice" id="ppr2">Preis auf Anfrage</div>
+      <ul class="pfeats"><li id="pfl2-1">Eigene Richtlinien</li><li id="pfl2-2">Team-Reporting</li><li id="pfl2-3">LMS-Integration</li><li id="pfl2-4">Onboarding</li></ul>
+      <a href="mailto:hello@praxa.de" class="pbtn" id="pb2">Demo anfragen</a>
+    </div>
+    <div class="plan">
+      <div class="pname" id="pn3">Enterprise</div>
+      <div class="pfor" id="pf3">Unbegrenzt</div>
+      <div class="pprice" id="ppr3">Individuell</div>
+      <ul class="pfeats"><li id="pfl3-1">White-Label</li><li id="pfl3-2">API</li><li id="pfl3-3">SLA</li><li id="pfl3-4">On-Premise möglich</li></ul>
+      <a href="mailto:hello@praxa.de" class="pbtn" id="pb3">Kontakt</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;gap:20px;"><a href="#" id="fl-1">Datenschutz</a><a href="#" id="fl-2">Impressum</a><a href="mailto:hello@praxa.de">hello@praxa.de</a></div>
+  <span class="fc" id="fcp">© 2026 PRAXA Skills · Made in Bavaria</span>
+</footer>
+
+<script>
+function fmt(n){return n.toLocaleString('de-DE')+'€';}
+function recalc(){
+  const l=+document.getElementById('sl-learners').value;
+  const d=+document.getElementById('sl-days').value;
+  const r=+document.getElementById('sl-rate').value;
+  document.getElementById('fv1').textContent=l;
+  document.getElementById('fv2').textContent=d;
+  document.getElementById('fv3').textContent=r;
+  const total=l*d*r;
+  const hours=l*d*8;
+  document.getElementById('ov1').textContent=fmt(total);
+  document.getElementById('ov2').textContent=hours.toLocaleString('de-DE')+' h';
+}
+recalc();
+
+const T={
+  de:{
+    'nav-demo':'Demo anfragen',
+    'ck':'Internes Training · Entscheidungsunterlage',
+    'ct':'Das günstigste L&D-Investment,<br>das Sie <strong>2026</strong> machen werden —<br>und das einzige, das vor dem Gespräch ansetzt.',
+    'tl':'Marktvergleich · Stand 2026',
+    'th0':'Kriterium','th1':'Seminar / Workshop','th2':'1:1 Coaching','th3':'E-Learning (generisch)','th4':'PRAXA Skills',
+    'f1':'Trainiert auf eigenen Unternehmensrichtlinien','c1-1':'Nein','c1-2':'Begrenzt','c1-3':'Nein','c1-4':'Ja',
+    'f2':'Wiederholbar ohne Trainer','c2-1':'Nein','c2-2':'Nein','c2-3':'Ja','c2-4':'Ja',
+    'f3':'Strukturiertes Feedback je Gespräch','c3-1':'Gruppen-Feedback','c3-2':'Ja','c3-3':'Nein','c3-4':'Ja',
+    'f4':'Skaliert auf gesamte Organisation','c4-1':'Hoher Aufwand','c4-2':'Nein','c4-3':'Ja','c4-4':'Ja',
+    'f5':'24/7 verfügbar','c5-1':'Nein','c5-2':'Nein','c5-3':'Ja','c5-4':'Ja',
+    'f6':'EU AI Act Art. 6 konform','c6-1':'k.A.','c6-2':'k.A.','c6-3':'Unklar','c6-4':'Ja',
+    'f7':'DSGVO · EU-Hosting','c7-1':'Variiert','c7-2':'Ja','c7-3':'Variiert','c7-4':'Ja',
+    'f8':'Zweisprachig DE / EN','c8-1':'Trainerabh.','c8-2':'Trainerabh.','c8-3':'Manchmal','c8-4':'Ja',
+    'f9':'Typische Kosten pro Lernende:r','c9-1':'300–2.000 €','c9-2':'150–400 €/h','c9-3':'20–80 € / Jahr','c9-4':'Auf Anfrage',
+    'calc-title':'ROI-Rechner','calc-sub':'Schätzen Sie das Einsparpotenzial für Ihre Organisation.',
+    'fl1':'Lernende','fl2':'Seminartage / Jahr pro Person','fl3':'Ø Tagessatz Seminar (€)',
+    'ol1':'Aktuelle Seminarkosten / Jahr','ol2':'Gebuchte Trainer-Stunden','ol3':'Geschätztes Einsparpotenzial',
+    'calc-note':'*Schätzung. PRAXA Skills ergänzt bestehende Formate. Genaue Zahlen im Demo-Gespräch.',
+    'prl':'Preise · EU-Hosting · DSGVO · keine Einrichtungsgebühr',
+    'pn1':'Starter','pf1':'Bis 25 Lernende','ppr1':'Preis auf Anfrage','pfl1-1':'200+ Szenarien','pfl1-2':'Sprach- & Textübungen','pfl1-3':'Feedback & Dashboard','pfl1-4':'E-Mail-Support','pb1':'Demo anfragen',
+    'pn2':'Professional','pf2':'Bis 250 Lernende','ppr2':'Preis auf Anfrage','pfl2-1':'Eigene Richtlinien','pfl2-2':'Team-Reporting','pfl2-3':'LMS-Integration','pfl2-4':'Onboarding','pb2':'Demo anfragen',
+    'pn3':'Enterprise','pf3':'Unbegrenzt','ppr3':'Individuell','pfl3-1':'White-Label','pfl3-2':'API','pfl3-3':'SLA','pfl3-4':'On-Premise möglich','pb3':'Kontakt',
+    'fl-1':'Datenschutz','fl-2':'Impressum','fcp':'© 2026 PRAXA Skills · Made in Bavaria',
+  },
+  en:{
+    'nav-demo':'Request demo',
+    'ck':'Internal training · Decision document',
+    'ct':'The most cost-effective L&D investment<br>you\'ll make in <strong>2026</strong> —<br>and the only one that intervenes before the conversation.',
+    'tl':'Market comparison · 2026',
+    'th0':'Criterion','th1':'Seminar / Workshop','th2':'1:1 Coaching','th3':'E-Learning (generic)','th4':'PRAXA Skills',
+    'f1':'Trained on your own company policies','c1-1':'No','c1-2':'Limited','c1-3':'No','c1-4':'Yes',
+    'f2':'Repeatable without a trainer','c2-1':'No','c2-2':'No','c2-3':'Yes','c2-4':'Yes',
+    'f3':'Structured feedback per conversation','c3-1':'Group feedback','c3-2':'Yes','c3-3':'No','c3-4':'Yes',
+    'f4':'Scales to entire organization','c4-1':'High effort','c4-2':'No','c4-3':'Yes','c4-4':'Yes',
+    'f5':'Available 24/7','c5-1':'No','c5-2':'No','c5-3':'Yes','c5-4':'Yes',
+    'f6':'EU AI Act Art. 6 compliant','c6-1':'N/A','c6-2':'N/A','c6-3':'Unclear','c6-4':'Yes',
+    'f7':'GDPR · EU hosting','c7-1':'Varies','c7-2':'Yes','c7-3':'Varies','c7-4':'Yes',
+    'f8':'Bilingual DE / EN','c8-1':'Trainer-dep.','c8-2':'Trainer-dep.','c8-3':'Sometimes','c8-4':'Yes',
+    'f9':'Typical cost per learner','c9-1':'€300–2,000','c9-2':'€150–400/h','c9-3':'€20–80/year','c9-4':'On request',
+    'calc-title':'ROI Calculator','calc-sub':'Estimate the savings potential for your organization.',
+    'fl1':'Learners','fl2':'Training days / year per person','fl3':'Avg. daily trainer rate (€)',
+    'ol1':'Current training cost / year','ol2':'Trainer hours booked','ol3':'Estimated savings potential',
+    'calc-note':'*Estimate. PRAXA Skills complements existing formats. Exact figures in the demo.',
+    'prl':'Pricing · EU hosting · GDPR · no setup fee',
+    'pn1':'Starter','pf1':'Up to 25 learners','ppr1':'Price on request','pfl1-1':'200+ scenarios','pfl1-2':'Voice & text practice','pfl1-3':'Feedback & dashboard','pfl1-4':'Email support','pb1':'Request demo',
+    'pn2':'Professional','pf2':'Up to 250 learners','ppr2':'Price on request','pfl2-1':'Custom policies','pfl2-2':'Team reporting','pfl2-3':'LMS integration','pfl2-4':'Onboarding','pb2':'Request demo',
+    'pn3':'Enterprise','pf3':'Unlimited','ppr3':'Custom','pfl3-1':'White-label','pfl3-2':'API','pfl3-3':'SLA','pfl3-4':'On-premise option','pb3':'Contact',
+    'fl-1':'Privacy','fl-2':'Imprint','fcp':'© 2026 PRAXA Skills · Made in Bavaria',
+  }
+};
+let lang='de';
+function toggleLang(){
+  lang=lang==='de'?'en':'de';
+  document.documentElement.lang=lang;
+  Object.keys(T[lang]).forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=T[lang][id];});
+  document.querySelector('.lang-btn').textContent=lang==='de'?'DE / EN':'EN / DE';
+}
+</script>
+</body>
+</html>
